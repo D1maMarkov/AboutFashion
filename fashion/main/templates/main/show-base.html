@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/show.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
+    </style>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+    {% block name %}{% endblock %}
+
+    {% block img %}{% endblock %}
+
+    {% for url in urls %}
+    <div class="video-show">
+        <object type="video" style="position: relative; width: 100%;">
+            <param name="movie" value="{{ url }}">
+            <param name="allowFullScreen" value="true">
+            <param name="allowScriptAccess" value="always">
+            <embed src="{{ url }}" allowfullscreen="true" allowScriptAccess="always">
+        </object>
+    </div>
+    {% endfor %}
+</body>
+</html>

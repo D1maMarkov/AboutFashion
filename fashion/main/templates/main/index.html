@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fasion House</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
+    </style>
+
+</head>
+<body>
+    <div class="container" style="overflow-x: hidden;">
+        <div id="first-block" class="block-text">
+            <img id="tommy" src="{% static 'main/img/tommy.png' %}"/>
+
+            <div id="logos">
+                <div id="fon"></div>
+                    <a id="one" href="{% url 'brand' 'balenciaga' %}"><img class="logo" src="{% static 'main/img/logos/balenciagablack.png' %}"/></a><br>
+                    <a id="two" href="{% url 'brand' 'maisonmargelia' %}"><img class="logo" src="{% static 'main/img/logos/maisonblack.png' %}"/></a><br>
+                    <a id="three" href="{% url 'brand' 'rick' %}"><img class="logo" src="{% static 'main/img/logos/rick.png' %}"/></a><br>
+                    <a id="four" href="{% url 'brand' 'givenchy' %}"><img class="logo" src="{% static 'main/img/logos/givenchy.png' %}"/></a><br>
+
+            </div>
+        </div>
+
+        <div class="animhr">
+            <hr class="mainhr">
+        </div>
+
+        <div id="second-block-text" class="block-text">
+            <div id="designers">
+                <p style="font-size: 4.5vw">Designers</p>
+                <a href="{% url 'modelsanddesigners' 'martin' %}">Martin Margelia</a><br>
+                <a href="{% url 'modelsanddesigners' 'rick' %}">Rick Owens</a><br>
+                <a href="{% url 'modelsanddesigners' 'tyrone' %}">Tyrone Dylane</a><br>
+            </div>
+
+            <img id="rick" src="{% static 'main/img/RickMainPage.png' %}"/>
+        </div>
+
+        <div class="animhr">
+            <hr class="mainhr">
+        </div>
+
+        <div id="third-block-text" class="block-text">
+            <img id="sofia" src="{% static 'main/img/modelsanddesigners/sofia2.jpg' %}"/>
+            <div id="models">
+                <p style="font-size: 4.5vw;">Models</p>
+                <a href="{% url 'modelsanddesigners' 'bella' %}">Bella Hadid</a><br>
+                <a href="{% url 'modelsanddesigners' 'tyrone' %}">Tyrone Dilane</a><br>
+                <a href="{% url 'modelsanddesigners' 'sofia' %}">Sofia Steinberg</a><br>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'main/js/main.js' %}"></script>
+    <script src="{% static 'main/js/main2.js' %}"></script>
+    <script src="{% static 'main/js/main3.js' %}"></script>
+</body>
+</html>

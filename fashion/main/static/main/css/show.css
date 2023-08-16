@@ -1,0 +1,57 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+@font-face {
+    font-family: 'Belanosima', sans-serif;
+    scr: local('Belanosima'),
+        url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap') format('truetype');
+}
+
+h1{
+    position: relative;
+    top: 50px;
+    left: 15%;
+}
+
+.video-show{
+    position: relative;
+    width: 100%;
+    top: 80px;
+    margin-right: 300px;
+    margin-bottom: 70px;
+}
+
+#background{
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+}
+
+@media (pointer:none), (pointer:coarse) {
+    #background{
+        position: fixed;
+        height: 100%;
+        width: auto;
+        z-index: -1;
+        top: 0px;
+    }
+
+    embed{
+        position: relative;
+        width: 300px;
+        aspect-ratio: 16/9;
+        left: 10%;
+    }
+}
+
+embed{
+    position: relative;
+    width: 50%;
+    aspect-ratio: 16/9;
+    left: 15%;
+}

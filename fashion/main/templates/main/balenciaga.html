@@ -1,0 +1,30 @@
+{% extends 'main/brand-base.html' %}
+{% load static %}
+{% block title %}
+    Balenciaga
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <img class="brand" src="{% static 'main/img/shows/balenciaga.png' %}"/>
+        <div class="brand-description">
+            <a><img class="logo" src="{% static 'main/img/logos/balenciagawhite.png' %}"/></a><br><br>
+            <a style="color: white; font-size: 1.5vw;">A fashion house founded in 1919 by Spanish designer
+              Cristobal Balenciaga in San Sebastian and currently based in Paris.
+              Balenciaga closed in 1968 and reopened under a new owner in 1986.
+              Now the Balenciaga house belongs to the French fashion group Kering</a><br><br>
+
+            <a style="color: white; font-size: 1vw;">models: </a>
+            <a style="color: white; font-size: 1vw;" href="{% url 'modelsanddesigners' 'bella' %}">Bella Hadid</a><br><br>
+            <a style="color: white; font-size: 1vw;" href="{% url 'Show' brand='balenciaga' %}">to view the shows click</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block models %}
+    <div class="models">
+        {% for model in model_names %}
+            <img src="{% static model %}"/>
+        {% endfor %}
+    </div>
+{% endblock %}

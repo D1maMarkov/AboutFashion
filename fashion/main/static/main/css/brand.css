@@ -1,0 +1,58 @@
+body{
+    margin: 0px;
+    font-family: 'Belanosima', sans-serif;
+}
+
+@font-face {
+    font-family: 'Belanosima', sans-serif;
+    scr: local('Belanosima'),
+        url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap') format('truetype');
+}
+
+.brand-description{
+    position: relative;
+    margin-top: 20%;
+    left: 7%;
+    width: 30%;
+    animation: text 2s 1;
+}
+
+.main{
+    margin-bottom: 20vw;
+}
+
+@keyframes text{
+  0%{
+    left: -500px;
+  }
+  100%{
+    left: 7%;
+  }
+}
+
+.logo{
+    width: 100%;
+}
+
+.brand{
+    position: absolute;
+    width: 100%;
+    top: 0px;
+}
+
+.models{
+    position: relative;
+    width: 97%;
+    left: 3%;
+    columns: 4;
+    padding-bottom: 100px;
+}
+
+img{
+    pointer-events: none;
+}
+
+.models img{
+    width: 80%;
+    margin-top: 5%;
+}
