@@ -1,61 +1,81 @@
 from django.shortcuts import render
-from django_ratelimit.decorators import ratelimit
-
-@ratelimit(key='ip', rate='15/m', block=True)
-def brand(request, brand):
-    file = f"main/{brand}.html"
-    return render(request, file, {'model_names': [f'main/img/{brand}models/{i}.jpg' for i in range(1, 9)]})
-
-@ratelimit(key='ip', rate='15/m', block=True)
-def modelsanddesigners(request, person):
-    file = f"main/modelsanddesigners/{person}.html"
-    return render(request, file)
-@ratelimit(key='ip', rate='15/m', block=True)
-def index(request):
-    return render(request, "main/index.html")
+from django.views.generic import TemplateView
+from .models import *
 
 
-urls = dict()
+class Index(TemplateView):
+    template_name = "main/index.html"
 
-urls['rick'] = ['https://www.youtube.com/watch?v=2g3ld7H6hN8&t=641s',
-    'https://www.youtube.com/watch?v=d7fE4Uw750Q',
-    'https://www.youtube.com/watch?v=B0F3s9pQ1XM',
-    'https://www.youtube.com/watch?v=rTih7Q5rtyc',
-    'https://www.youtube.com/watch?v=7iO79MAr7J0'
-]
+    def get_context_data(self):        
+        brands = Brand.objects.all()
+        models = Model.objects.all()
+        designers = Designer.objects.all()
+        
+        context = {'brands': brands, 'models': models, 'designers': designers}
+        
+        return context
+    
 
-urls['balenciaga'] = ['https://www.youtube.com/watch?v=_CqKv0Y1FB0',
-    'https://www.youtube.com/watch?v=JBDB6kuAO3o',
-    'https://www.youtube.com/watch?v=O2XVFT7ep6M',
-    'https://www.youtube.com/watch?v=GeDRlGuKt50&t=63s',
-    'https://www.youtube.com/watch?v=9xquwik2K5k'
-]
+class BrandView(TemplateView):
+    template_name = "main/brand.html"
 
-urls['maison'] = ['https://www.youtube.com/watch?v=engKJs3E2EY',
-    'https://www.youtube.com/watch?v=fEO8Bouz2pY',
-    'https://www.youtube.com/watch?v=-YWoaqfWOkU',
-    'https://www.youtube.com/watch?v=i4NkaKS5J7I',
-    'https://www.youtube.com/watch?v=JcRE3ByrpmI'
-]
+    def get_context_data(self, **kwargs):
+        context = super(BrandView, self).get_context_data(**kwargs)
+        
+        brand = Brand.objects.get(id=context["id"])
+        models = brand.model_set.all()
+        designers = brand.designer_set.all()
+        
+        models_images = ModelImage.objects.filter(brand=context["id"])
+        context = {'brand': brand, 
+                   'model_images': models_images, 
+                   'models': models,
+                   'designers': designers
+                   }
+        
+        return context
 
-urls['givenchy'] = ['https://www.youtube.com/watch?v=8JKrvQxkIE0&pp=ygUOZ2l2ZW5jaHkgc2hvd3M%3D',
-    'https://www.youtube.com/watch?v=xd5QoBvycBU&pp=ygUOZ2l2ZW5jaHkgc2hvd3M%3D',
-    'https://www.youtube.com/watch?v=1EhPZkQhCkA&pp=ygUOZ2l2ZW5jaHkgc2hvd3M%3D',
-    'https://www.youtube.com/watch?v=yK60pNdoQ6U&pp=ygUOZ2l2ZW5jaHkgc2hvd3M%3D',
-    'https://www.youtube.com/watch?v=_ZCz0kboigI&pp=ygUOZ2l2ZW5jaHkgc2hvd3M%3D'
-]
 
-@ratelimit(key='ip', rate='15/m', block=True)
-def shows(request, brand):
-    print(brand)
-    local_urls = urls[brand]
-    for i in range(len(local_urls)):
-        local_urls[i] = local_urls[i].replace('watch?v=', 'embed/')
-        for j in range(len(local_urls[i])):
-            if local_urls[i][j] == '&':
-                local_urls[i] = local_urls[i][0:j]
-                break
+class DesignerView(TemplateView):
+    template_name = "main/model.html"
+   
+    def get_context_data(self, **kwargs):
+        context = super(DesignerView, self).get_context_data(**kwargs)
+        context = {'model': Designer.objects.get(id=context["id"])}
+        
+        return context
+    
+class ModelView(TemplateView):
+    template_name = "main/model.html"
+   
+    def get_context_data(self, **kwargs):
+        context = super(ModelView, self).get_context_data(**kwargs)
+        context = {'model': Model.objects.get(id=context["id"])}
+        
+        return context
 
-    file = f"main/{brand}show.html"
-    print(file)
-    return render(request, file, {'urls': local_urls})
+
+class ShowsView(TemplateView):
+    template_name = "main/show.html"
+   
+    def get_context_data(self, **kwargs):
+        context = super(ShowsView, self).get_context_data(**kwargs)
+        urls = list(map(lambda x: x.link, ShowLink.objects.filter(brand=context["id"])))
+        
+        for i in range(len(urls)):
+            urls[i] = urls[i].replace('watch?v=', 'embed/')
+            while urls[i][0] in ["'", '"']:
+                urls[i] = urls[i][1::]
+                
+            while urls[i][-1] in ["'", '"']:
+                urls[i] = urls[i][0:-1]
+                
+            for j in range(len(urls[i])):
+                if urls[i][j] == '&':
+                    urls[i] = urls[i][0:j]
+                    break
+
+        brand = Brand.objects.get(id=context["id"])
+        context = {'urls': urls, 'brand': brand}
+        
+        return context

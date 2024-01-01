@@ -1,19 +1,7 @@
-body{
-    margin: 0px;
-    padding: 0px;
-}
-
-
-@font-face {
-    font-family: 'Belanosima', sans-serif;
-    scr: local('Belanosima'),
-        url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap') format('truetype');
-}
-
 h1{
-    position: relative;
-    top: 50px;
-    left: 15%;
+    margin-top: 50px;
+    margin-left: 15%;
+    font-size: 4vw;
 }
 
 .video-show{
@@ -32,6 +20,19 @@ h1{
     left: 0px;
 }
 
+.video-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+iframe{
+    width: 640;
+    aspect-ratio: 16/9;
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
 @media (pointer:none), (pointer:coarse) {
     #background{
         position: fixed;
@@ -41,17 +42,7 @@ h1{
         top: 0px;
     }
 
-    embed{
-        position: relative;
+    iframe{
         width: 300px;
-        aspect-ratio: 16/9;
-        left: 10%;
     }
-}
-
-embed{
-    position: relative;
-    width: 50%;
-    aspect-ratio: 16/9;
-    left: 15%;
 }

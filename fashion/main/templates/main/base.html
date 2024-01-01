@@ -1,0 +1,17 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'main/css/common.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="overflow-x: hidden;">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+body{
+    font-family: 'Belanosima', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
+
+
+@keyframes animationHr{
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+.hr__wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.hr__wrapper hr{
+    width: 90%;
+    margin: 60px;
+    border: 2px solid gray;
+    border-radius: 2px;
+}
+
+.hr__anim{
+    animation: animationHr .75s;
+}
+
+img{
+    pointer-events: none;
+}
+
+.anim__text__left{
+    animation: textLeft 1s;
+}
+
+@keyframes textLeft{
+    0%{
+        transform: translate(-50vw, 0);
+    }
+    100%{
+        transform: translate(0, 0);
+    }
+}
+
+.anim__text__right{
+    animation: textRight 1s;
+}
+
+@keyframes textRight{
+    0%{
+        transform: translate(50vw, 0);
+    }
+    100%{
+        transform: translate(0, 0);
+    }
+}
+
+.photo{
+    height: 70vh;
+}

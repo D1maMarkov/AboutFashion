@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ brand.name }}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main/css/brand.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <img class="brand" src={{ brand.image.url }}/>
+        <div class="brand-description" style="color: {{ brand.brand_text_color }};" >
+            <a><img class="logo" src={{ brand.brand_logo.url }}/></a><br><br>
+            <a style="font-size: 1.5vw;">{{ brand.description }}</a><br><br>
+            
+            {% if models.count > 0 %}
+                <a style="font-size: 1vw;">models: </a>
+            {% endif %}
+
+            {% for model in models %}
+                <a style="color: {{ brand.brand_text_color }}; font-size: 1vw;" href={% url 'models' model.id %}>{{ model.name }}</a><br><br>
+            {% endfor %}
+
+            {% if designers.count > 0 %}
+                <a style="font-size: 1vw;">designers: </a>
+            {% endif %}
+
+            {% for designer in designers %}
+                <a style="color: {{ brand.brand_text_color }}; font-size: 1vw;" href={% url 'designers' designer.id %}>{{ designer.name }}</a><br><br>
+            {% endfor %}
+
+            <a style="color: {{ brand.brand_text_color }}; font-size: 1vw;" href={% url 'shows' brand.id %}>to view the shows click</a>
+        </div>
+    </div>
+
+    <div class="models">
+        {% for model in model_images %}
+            <img src={{ model.image.url }}/>
+        {% endfor %}
+    </div>
+{% endblock %}

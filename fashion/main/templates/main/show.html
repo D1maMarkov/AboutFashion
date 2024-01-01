@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ brand.name }}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main/css/show.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h1 style="color: {{ brand.show_text_color }}">{{ brand.name }} shows</h1>
+
+    <img id="background" src={{ brand.image_show.url }}/>
+
+    <div class="video-wrapper">
+        {% for url in urls %}
+            <iframe src={{ url }} frameborder="0" allowfullscreen>
+            </iframe>
+        {% endfor %}
+    </div>
+
+{% endblock %}

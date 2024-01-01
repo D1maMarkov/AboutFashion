@@ -1,211 +1,44 @@
-body{
-    font-family: 'Belanosima', sans-serif;
-    margin: 0px;
-    padding: 0px;
-
-}
-
-@font-face {
-    font-family: 'Belanosima', sans-serif;
-    scr: local('Belanosima'),
-        url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap') format('truetype');
-}
-
-
 #tommy{
-    position: absolute;
-    width: 100%;
-    pointer-events: none;
-    z-index: -1;
+  width: 100%;
 }
 
 .logo{
-    position: relative;
-    width: 85%;
-    margin: 7%;
-}
-
-#first-block{
-    position: relative;
+  width: 85%;
+  margin: 7%;
 }
 
 #logos{
-    position: relative;
+    position: absolute;
     left: 65%;
+    background: rgba(255, 255, 255, .5);
     width: 30%;
     margin-top: 8%;
-    padding-bottom: 12%;
+    animation: textRight 1s;
 }
 
-#fon{
-    position: absolute;
-    width: 100%;
-    height: 80%;
-    opacity: 0.5;
-    background-color: white;
-    animation: textbrand1 1s 1;
-}
-
-#one{
-    position: relative;
-    animation: textbrand1 1.5s 1;
-}
-
-#two{
-    position: relative;
-    animation: textbrand2 1.5s 1;
-}
-
-#three{
-    position: relative;
-    animation: textbrand3 1.5s 1;
-}
-
-#four{
-    position: relative;
-    animation: textbrand4 1.5s 1;
-}
-
-@keyframes textbrand1{
-  0%{
-    left: 500px;
-  }
-  100%{
-    left: 0px;
-  }
-}
-
-@keyframes textbrand2{
-  0%{
-    left: 600px;
-  }
-  100%{
-    left: 0px;
-  }
-}
-
-@keyframes textbrand3{
-  0%{
-    left: 700px;
-  }
-  100%{
-    left: 0px;
-  }
-}
-
-@keyframes textbrand4{
-  0%{
-   left: 800px;
-  }
-  100%{
-    left: 0px;
-  }
+#logos img{
+  pointer-events: auto;
 }
 
 .block-text{
     display: flex;
+    justify-content: space-between;
 }
 
-#rick{
-    position: relative;
-    left: 5%;
-    width: 40%;
-    pointer-events: none;
+#second-block-text, #third-block-text{
+  width: 90%;
+  margin-left: 5%;
 }
 
-#designers{
-    width: 50%;
-    position: relative;
-    top: 5%;
-    font-size: 4vw;
-    left: 15%;
+#designers, #models{
+  font-size: 4vw;
 }
 
-.anim{
-    position: relative;
-    animation: text2 1.5s 1;
-}
-
-#designers a{
-    position: relative;
-    color: black;
-    text-decoration: none;
-    margin-bottom: 50px;
-}
-
-@keyframes text2{
-  0%{
-    left: -500px;
-  }
-  100%{
-    left: 15%;
-  }
-}
-
-@keyframes animationhr{
-    0%{
-        width: 0px;
-    }
-    100%{
-        width: 80%;
-    }
-}
-
-.animhr{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.mainhr{
-    position: relative;
-    width: 80%;
-    margin: 60px;
-    border: 2px solid gray;
-    border-radius: 2px;
-}
-
-.mainhrhr{
-    animation: animationhr 0.75s 1;
-}
-
-#models{
-    position: relative;
-    top: 5%;
-    font-size: 4vw;
-    left: 20%;
-}
-
-.anim2{
-    position: relative;
-    animation: text3 1.5s 1;
-}
-
-#models a{
-    position: relative;
-    color: black;
-    text-decoration: none;
-}
-
-#sofia{
-    position: relative;
-    right: -70px;
-    width: 40%;
-    pointer-events: none;
-    z-index: 999;
-}
-
-@keyframes text3{
-  0%{
-    left: -30%;
-  }
-  100%{
-    left: 20%;
-  }
+#designers a, #models a{
+  color: black;
+  text-decoration: none;
 }
 
 #third-block-text{
-    position: relative;
-    width: 100%;
     padding-bottom: 15%;
 }

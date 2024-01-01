@@ -1,212 +1,23 @@
 body{
-    font-family: 'Belanosima', sans-serif;
     background-color: rgb(245, 245, 245);
-    margin: 0px;
-    padding: 0px;
-}
-
-@font-face {
-    font-family: 'Belanosima', sans-serif;
-    scr: local('Belanosima'),
-        url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap') format('truetype');
-}
-
-a{
-    position: relative;
-    left: 5vw;
-    font-size: 2vw;
-    animation: text 2s 1;
-}
-
-@keyframes text{
-  0%{
-    left: -50vw;
-  }
-  90%{
-    left: 5vw;
-  }
-}
-
-#rick{
-    position: relative;
-    left: 50px;
-    width: 60%;
-    height: 100%;
-}
-
-#Martin{
-    position: absolute;
-    right: 0px;
-    height: 90%;
-    top: 10%;
-}
-
-.martinbg{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(50, 50, 50);
-}
-
-#tyrone{
-    position: relative;
-    left: 300px;
-    margin-right: 10%;
-    margin-top: 50px;
-    width: 30%;
-    height: 50%;
-    border-radius: 10px;
-}
-
-.main{
-    position: relative;
-    width: 100%;
-}
-#lamy{
-    position: relative;
-    float: left;
-    width: 30%;
-    text-align: center;
-    z-index: 999;
-}
-
-#sofia, #white{
-    position: absolute;
-    width: 100%;
-}
-.bellatxt{
-    position: relative;
-    width: 40%;
-    margin-top: 10vw;
-    left: 5%;
-    z-index: 900;
-}
-
-.bella{
-    position: relative;
-    width: 35%;
-    height: 90%;
-    margin-top: 5%;
-    left: 20%;
-    margin-right: 10%;
-}
-
-.bella2{
-    position: relative;
-    width: 35%;
-    left: 5%;
-    z-index: 100;
-}
-
-#martin2{
-    height: 45%;
-}
-
-.textaboutbella2{
-    position: relative;
-    margin-top: 10%;
-    width: 40%;
-    left: 15%;
-}
-
-#block-bella2{
-    padding-bottom: 20%;
 }
 
 .block-text{
     display: flex;
-    position: relative;
-    width: 100%;
+    justify-content: space-between;
+    width: 90vw;
+    margin-left: 5vw;
+    align-items: center;
+    height: 80vh;
 }
 
-#lamyy{
-    width: 100%;
-}
-#lamyy a{
-    top: 30%;
+.text{
+    width: 40vw;
+    font-size: 2vw;
 }
 
 figcaption{
     margin-top: 20px;
-    font-size: 25px;
-}
-
-img{
-    pointer-events: none;
-}
-
-#textaboutmartin, #textaboutlamy{
-    position: relative;
-    top: 30%;
-    width: 50%;
-}
-
-.animLamy{
-    position: relative;
-    animation: lamyAnimation 1.5s 1;
-}
-
-@keyframes lamyAnimation{
-    0%{
-        left: -500px;
-    }
-    100%{
-        left: 0px;
-    }
-}
-
-#white{
-    opacity: 0.5;
-}
-
-#textaboutsofia{
-    position: relative;
-    animation: sofia-anim 1s 1;
-}
-
-@keyframes sofia-anim{
-    0%{
-        left: -500px;
-    }
-    100%{
-        left: 0px;
-    }
-}
-
-#txtsofia{
-    position: relative;
-    top: 70px;
-    width: 30%;
-    font-size: 25px;
-}
-
-@keyframes animationhr{
-    0%{
-        width: 0px;
-    }
-    100%{
-        width: 80%;
-    }
-}
-
-.animhr{
-    position: relative;
-    width: 100%;
-    display: flex;
-
-    justify-content: center;
-}
-
-.mainhr{
-    position: relative;
-    width: 80%;
-    margin: 60px;
-    border: 2px solid gray;
-    border-radius: 2px;
-}
-
-.mainhrhr{
-    animation: animationhr 0.75s 1;
+    text-align: center;
+    font-size: 3vw;
 }
