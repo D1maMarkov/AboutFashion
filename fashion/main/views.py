@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import *
+import scrapetube
 
 
 class Index(TemplateView):
@@ -14,7 +14,7 @@ class Index(TemplateView):
         context = {'brands': brands, 'models': models, 'designers': designers}
         
         return context
-    
+
 
 class BrandView(TemplateView):
     template_name = "main/brand.html"
@@ -27,11 +27,13 @@ class BrandView(TemplateView):
         designers = brand.designer_set.all()
         
         models_images = ModelImage.objects.filter(brand=context["id"])
-        context = {'brand': brand, 
-                   'model_images': models_images, 
-                   'models': models,
-                   'designers': designers
-                   }
+        
+        context = {
+            'brand': brand, 
+            'model_images': models_images, 
+            'models': models,
+            'designers': designers
+        }
         
         return context
 
@@ -44,7 +46,8 @@ class DesignerView(TemplateView):
         context = {'model': Designer.objects.get(id=context["id"])}
         
         return context
-    
+
+
 class ModelView(TemplateView):
     template_name = "main/model.html"
    
@@ -60,22 +63,15 @@ class ShowsView(TemplateView):
    
     def get_context_data(self, **kwargs):
         context = super(ShowsView, self).get_context_data(**kwargs)
-        urls = list(map(lambda x: x.link, ShowLink.objects.filter(brand=context["id"])))
-        
-        for i in range(len(urls)):
-            urls[i] = urls[i].replace('watch?v=', 'embed/')
-            while urls[i][0] in ["'", '"']:
-                urls[i] = urls[i][1::]
-                
-            while urls[i][-1] in ["'", '"']:
-                urls[i] = urls[i][0:-1]
-                
-            for j in range(len(urls[i])):
-                if urls[i][j] == '&':
-                    urls[i] = urls[i][0:j]
-                    break
-
         brand = Brand.objects.get(id=context["id"])
+
+        videos = scrapetube.get_channel(channel_username=brand.youtube_channel, limit=5)
+
+        urls = []
+        
+        for video in videos:
+            urls.append("https://www.youtube.com/embed/" + video['videoId'])
+
         context = {'urls': urls, 'brand': brand}
         
         return context

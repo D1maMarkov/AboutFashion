@@ -9,25 +9,25 @@
 
 {% block content %}
 
-<div class="block-text">
+<section class="block-text">
     <div class="text text__left">
         <a>{{ model.biography1 }}</a>
     </div>
 
     <img class="photo" src={{ model.photo1.url }}/>
-</div>
+</section>
 
 <div class="hr__wrapper">
     <hr>
 </div>
 
-<div class="block-text" style="padding-bottom: 20%;">
+<section class="block-text" style="padding-bottom: 20%;">
     <img class="photo" src={{ model.photo2.url }}/>
 
     <div class="text text__right" >
         <a>{{ model.biography2 }}</a>
     </div>
-</div>
+</section>
 
 <script src="{% static 'main/js/hrAnim.js' %}"></script>
 <script src="{% static 'main/js/textAnim.js' %}"></script>

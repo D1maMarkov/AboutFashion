@@ -12,18 +12,20 @@
 <div class="block-text">
     <img id="tommy" src="{% static 'main/img/tommy.png' %}"/>
 
-    <div id="logos">
+    <aside id="logos">
         {% for brand in brands %}
-            <a href="{% url 'brand' brand.id %}"><img class="logo" src={{ brand.index_logo.url }}/></a><br>
+            <a href="{% url 'brand' brand.id %}">
+                <img class="logo" src={{ brand.index_logo.url }}/>
+            </a><br>
         {% endfor %}
-    </div>
+    </aside>
 </div>
 
 <div class="hr__wrapper">
     <hr>
 </div>
 
-<div id="second-block-text" class="block-text">
+<section id="second-block-text" class="block-text">
     <div id="designers" class="text__left">
         <p style="font-size: 4.5vw">Designers</p>
         {% for designer in designers %}
@@ -32,22 +34,22 @@
     </div>
 
     <img class="photo" src="{% static 'main/img/RickMainPage.png' %}"/>
-</div>
+</section>
 
 <div class="hr__wrapper">
     <hr>
 </div>
 
-<div id="third-block-text" class="block-text">
+<section id="third-block-text" class="block-text">
     <img class="photo" src="{% static 'main/img/modelsanddesigners/sofia2.jpg' %}"/>
-    
+
     <div id="models" class="text__right">
         <p style="font-size: 4.5vw;">Models</p>
         {% for model in models %}
             <a href="{% url 'models' model.id %}">{{ model.name }}</a><br>
         {% endfor %}
     </div>
-</div>
+</section>
 
 <script src="{% static 'main/js/hrAnim.js' %}"></script>
 <script src="{% static 'main/js/textAnim.js' %}"></script>

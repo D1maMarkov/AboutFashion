@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main">
+    <main>
         <img class="brand" src={{ brand.image.url }}/>
         <div class="brand-description" style="color: {{ brand.brand_text_color }};" >
             <a><img class="logo" src={{ brand.brand_logo.url }}/></a><br><br>
             <a style="font-size: 1.5vw;">{{ brand.description }}</a><br><br>
-            
+  
             {% if models.count > 0 %}
                 <a style="font-size: 1vw;">models: </a>
             {% endif %}
@@ -32,7 +32,7 @@
 
             <a style="color: {{ brand.brand_text_color }}; font-size: 1vw;" href={% url 'shows' brand.id %}>to view the shows click</a>
         </div>
-    </div>
+    </main>
 
     <div class="models">
         {% for model in model_images %}
